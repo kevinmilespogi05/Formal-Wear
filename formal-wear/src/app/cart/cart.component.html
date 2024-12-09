@@ -1,0 +1,197 @@
+<div class="product-container">
+    <div class="img-bg">
+        <img class="img1"
+        src="https://cdn.discordapp.com/attachments/1201462060081500195/1314752331560259595/bg5.jpg?ex=6754ea06&is=67539886&hm=7c19257e67b1c157f8d2d0a3fc999f67f9ecff9c96911280b76a0e82e06423d5&">
+    </div>
+    <div class="product-container-laptop">
+
+        <div class="header-flex">
+
+            <h2>Your Cart:</h2>
+
+            <div class="group-flex">
+                <div class="shop-cart">
+                    <button class="icon" (click)="goToProductListing()">
+                        <i class="fa-solid fa-shop"></i>
+                        <!-- Logout -->
+                    </button>
+                </div>
+
+                <div class="shop-cart">
+                    <button class="icon" (click)="goToProduct()">
+                        <i class="fa-solid fa-square-plus"></i>
+                        <!-- Logout -->
+                    </button>
+                    <div class="cart-l">
+                        <p>{{ products?.length }}</p>
+                    </div>
+                </div>
+
+                <button class="icon" data-bs-toggle="modal" data-bs-target="#logout">
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                    <!-- Logout -->
+                </button>
+            </div>
+
+        </div>
+
+        <div *ngIf="carts && carts.length > 0">
+
+            <div class="flexer">
+
+
+                <div class="container-tn" *ngFor="let cart of carts">
+
+                    <div class="pr-img">
+                        <img [src]="getImageUrl(cart.image)" class="product-image" alt="image">
+                    </div>
+
+                    <div class="v-hr"></div>
+
+                    <div class="infos">
+
+
+                        <div class="pr-name">
+                            <p>{{ cart.name }}</p>
+                        </div>
+                        <!-- <div class="pr-desc">
+                            <p>{{ cart.description }}</p>
+                        </div> -->
+                        <div class="pr-price">
+                            <p>$ {{ cart.price }}</p>
+                        </div>
+
+                        <div class="pr-quanti">
+                            <input type="number" [(ngModel)]="cart.quantity" (click)="updateCart(cart)" />
+
+                            <!-- <button (click)="updateCart(cart)">Update</button> -->
+                        </div>
+
+                        <div class="pr-select">
+                            <input type="checkbox" [(ngModel)]="cart.selected" (change)="updateSelectedCarts(cart)" />
+                        </div>
+
+                        <div class="pr-sub-total">
+                            <p>$ {{ (cart.price * cart.quantity).toFixed(2) }}</p>
+                        </div>
+
+                    </div>
+
+                    <div class="middle-tn-btn">
+                        <div class="add-to-cart">
+                            <button class="icon" data-bs-toggle="modal" data-bs-target="#deleteCart"
+                                (click)="setSelectedCartId(cart.id)"><i class="fa-solid fa-trash"></i></button>
+                        </div>
+                    </div>
+
+                </div>
+
+
+
+                <div class="pr-total">
+                    <div class="pr-select-all">
+                        <p class="white">Select All</p>
+                        <input type="checkbox" [(ngModel)]="selectAll" (change)="selectAllCarts($event)" />
+                    </div>
+                    <!-- <h1>Check out: </h1> -->
+                    <p class="white">Total Amount:</p> <!-- Display total amount for all cart items -->
+                    <!-- <div class="v-hr"></div> -->
+                    <p class="white">$ {{ calculateTotal().toFixed(2) }}</p>
+                    <!-- Display total amount for all cart items -->
+                </div>
+                <div class="pr-total">
+                    <p class="white">Selected Items Total:</p>
+                    <p class="white">$ {{ calculateSelectedTotal().toFixed(2) }}</p>
+                </div>
+                <div class="pr-checkout">
+                    <button class="icon" data-bs-toggle="modal" data-bs-target="#summaryModal">Rent</button>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+
+
+<!-- deleteCart -->
+<div class="modal fade" id="deleteCart" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <!-- Your modal content here -->
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" (click)="deleteCart(selectedCartId)"
+                    data-bs-dismiss="modal">Delete</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- logout -->
+<div class="modal fade" id="logout" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <!-- Your modal content here -->
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" (click)="logout()" data-bs-dismiss="modal">Logout</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Add the summary modal -->
+<div class="modal fade" id="summaryModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Summary</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Product</th>
+                            <th>Quantity</th>
+                            <th>Price</th>
+                            <th>Sub-total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let cart of selectedCarts">
+                            <td class="td">{{ cart.name }}</td>
+                            <td class="td">{{ cart.quantity }}</td>
+                            <td class="td">$ {{ cart.price }}</td>
+                            <td class="td">$ {{ (cart.price * cart.quantity).toFixed(2) }}</td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <th colspan="3">Total:</th>
+                            <th class="td">$ {{ calculateSelectedTotal().toFixed(2) }}</th>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" (click)="checkout()"
+                    data-bs-dismiss="modal">Rent</button>
+            </div>
+        </div>
+    </div>
+</div>

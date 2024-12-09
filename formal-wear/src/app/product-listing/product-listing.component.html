@@ -1,0 +1,178 @@
+<div class="product-container">
+    <div class="img-bg">
+        <img class="img1"
+            src="https://cdn.discordapp.com/attachments/1201462060081500195/1314752331560259595/bg5.jpg?ex=6754ea06&is=67539886&hm=7c19257e67b1c157f8d2d0a3fc999f67f9ecff9c96911280b76a0e82e06423d5&">
+    </div>
+    <div class="product-container-laptop">
+
+        <div class="header-flex">
+            <h2>Formal Wear</h2>
+
+            <div class="group-flex">
+
+                <div class="shop-cart">
+                    <button class="icon" (click)="goToProduct()">
+                        <i class="fa-solid fa-square-plus"></i>
+                        <!-- Logout -->
+                    </button>
+                    <div class="cart-l">
+                        <p>{{ products?.length }}</p>
+                    </div>
+                </div>
+
+                <div class="shop-cart">
+                    <!-- Original button -->
+                    <button class="icon" data-bs-toggle="modal" data-bs-target="#goToCart">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                        <!-- Go to Cart -->
+                    </button>
+
+                    <div class="cart-l">
+                        <p>{{ carts?.length }}</p>
+                    </div>
+                </div>
+
+                <button class="icon" data-bs-toggle="modal" data-bs-target="#logout">
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                    <!-- Logout -->
+                </button>
+
+            </div>
+
+
+
+        </div>
+
+        <div *ngIf="allProducts && allProducts.length > 0">
+
+
+            <div class="flexer">
+                <div class="container-tn" *ngFor="let product of allProducts">
+
+                    <img [src]="getImageUrl(product.image)" (click)="openModal(product)" class="product-image"
+                        alt="image">
+                    <div class="hr">
+                    </div>
+
+                    <div class="pr-details">
+                        <div class="pr-name">
+                            <p>{{ product.name }}</p>
+                        </div>
+                        <!-- <p>{{ product.description }}</p> -->
+                        <div class="pr-price">
+                            <p>$ {{ product.price }}</p>
+                        </div>
+                    </div>
+
+                    <!-- <div class="middle-tn-bg">
+                    </div> -->
+
+                    <div class="middle-tn-btn">
+                        <div class="add-to-cart">
+                            <button class="icon" data-bs-toggle="modal" data-bs-target="#addToCart"
+                                (click)="selectProduct(product)">
+                                <i class="fa-solid fa-cart-plus"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+<!-- Image Modal -->
+<div class="modal1" [ngClass]="{'show': isModalOpen}">
+    <span class="close" (click)="closeModal()">&times;</span>
+    <div class="modal1-body">
+        <div class="full-info">
+
+            <img class="product-image-modal" [src]="selectedProduct ? getImageUrl(selectedProduct.image) : ''">
+            <div class="modal1-info">
+                <h2>{{ selectedProduct?.name }}</h2>
+                <p class="modal1-desc">{{ selectedProduct?.description }}</p>
+                <div class="modal1-group">
+                    <h2>$ {{ selectedProduct?.price }}</h2>
+                    <button class="modal1-icon" data-bs-toggle="modal"
+                        (click)="selectedProduct && selectProduct(selectedProduct)" data-bs-target="#addToCart">
+                        <i class="fa-solid fa-cart-plus"></i>
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- image-modal.component.html -->
+<!-- <div class="image-modal-container">
+    <h2>Image Modal</h2>
+    <p>Here, we use CSS to create a modal (dialog box) that is hidden by default.</p>
+    <p>We use Angular to trigger the modal and to display the current image inside the modal when it is clicked on.</p>
+    <img [src]="imageUrl" alt="Northern Lights, Norway" width="300" height="200" (click)="openModal()"> -->
+
+
+<!-- </div> -->
+
+
+<!-- goToCart -->
+<div class="modal fade" id="goToCart" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <!-- Your modal content here -->
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" (click)="goToCart()" data-bs-dismiss="modal">Go to
+                    Cart</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- addToCart -->
+<div class="modal fade" id="addToCart" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <!-- Your modal content here -->
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" *ngIf="selectedProduct"
+                    (click)="addProductToCart(selectedProduct.id, 1)" data-bs-dismiss="modal">Add to Cart</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- logout -->
+<div class="modal fade" id="logout" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <!-- Your modal content here -->
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" (click)="logout()" data-bs-dismiss="modal">Logout</button>
+            </div>
+        </div>
+    </div>
+</div>
