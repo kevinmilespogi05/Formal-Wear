@@ -1,0 +1,9 @@
+{
+    "name": "rentapi",
+    "description": "A formal wear rental system backend",
+    "require": {
+      "php": ">=7.4",
+      "ext-pdo": "*"
+    }
+  }
+  
