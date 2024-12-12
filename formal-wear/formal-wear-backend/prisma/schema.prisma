@@ -1,0 +1,42 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = "mysql://root:@localhost:3306/formal_wear_rental"
+}
+
+model User {
+  id        Int       @id @default(autoincrement())
+  name      String
+  email     String    @unique
+  password  String
+  role      String    @default("USER") // Possible values: 'USER', 'ADMIN'
+  rentals   Rental[]  // Relation to rentals
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+}
+
+model Product {
+  id          Int       @id @default(autoincrement())
+  name        String
+  description String
+  price       Float
+  imageUrl    String
+  isAvailable Boolean   @default(true)
+  rentals     Rental[]  // Relation to rentals
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+}
+
+model Rental {
+  id        Int       @id @default(autoincrement())
+  userId    Int       // Foreign key to User
+  productId Int       // Foreign key to Product
+  status    String    @default("PENDING") // Possible values: 'PENDING', 'CONFIRMED', 'CANCELED', 'RETURNED'
+  user      User      @relation(fields: [userId], references: [id])
+  product   Product   @relation(fields: [productId], references: [id])
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+}
