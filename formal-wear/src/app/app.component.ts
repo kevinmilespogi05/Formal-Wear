@@ -1,27 +1,13 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-import { LoginECommComponent } from './login/login.component';
-import { RegisterECommComponent } from './register/register.component';
-import { BodyComponent } from './body/body.component';
-import { ProductComponent } from './product/product.component';
-import { CartComponent } from './cart/cart.component';
-import { AllProductsComponent } from './product-listing/product-listing.component';
-
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
-  standalone: true,
-  imports: [RouterOutlet,
-    LoginECommComponent,
-    RegisterECommComponent,
-    BodyComponent,
-    ProductComponent,
-    CartComponent,
-    AllProductsComponent
-  ],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  template: `
+    <router-outlet></router-outlet>
+  `,
+  styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'Formal Wear';
+  constructor(private router: Router) {}
 }
