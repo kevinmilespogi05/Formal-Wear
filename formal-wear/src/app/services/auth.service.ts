@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
     providedIn: 'root'
 })
 export class AuthService {
-    apiUrl = 'http://localhost/Formal-Wear/formal_api/'; // Updated API URL
+    apiUrl = 'http://localhost/formal_api/';
     private token: string = '';
     private userId: number | undefined;
 

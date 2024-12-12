@@ -14,7 +14,7 @@ export class ProductService {
     updateCartQuantity(cartId: number, quantity: number) {
         throw new Error('Method not implemented.');
     }
-    apiUrl = 'http://localhost/Formal-Wear/formal_api/'; // Updated API URL
+    private apiUrl = 'http://localhost/formal_api/';
 
     constructor(private http: HttpClient, private authService: AuthService, private router: Router) { }
 
