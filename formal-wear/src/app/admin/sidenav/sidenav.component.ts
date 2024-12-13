@@ -9,5 +9,9 @@ import { RouterModule } from '@angular/router';  // Import RouterModule
   styleUrls: ['./sidenav.component.css']  // Fix the typo in styleUrl -> styleUrls
 })
 export class SidenavComponent {
-  // Your component logic
+  isSidebarOpen: boolean = false;
+
+  toggleSidebar() {
+    this.isSidebarOpen = !this.isSidebarOpen;
+  }
 }

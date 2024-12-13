@@ -1,0 +1,82 @@
+/* Container for the users table */
+.users-container {
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  overflow-x: auto; /* Makes the table horizontally scrollable on smaller screens */
+}
+
+/* Title styling */
+.users-container h2 {
+  text-align: center;
+  color: #333;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+/* Table styling */
+.users-container table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+/* Table header styling */
+.users-container th {
+  background-color: #2ecc71;
+  color: white;
+  padding: 12px 15px;
+  text-align: left;
+  font-size: 16px;
+}
+
+/* Table row styling */
+.users-container td {
+  padding: 12px 15px;
+  border-bottom: 1px solid #ddd;
+  font-size: 14px;
+}
+
+/* Hover effect on table rows */
+.users-container tr:hover {
+  background-color: #f1f1f1;
+}
+
+/* Responsive styling for mobile screens */
+@media (max-width: 768px) {
+  /* Stack table data for smaller screens */
+  .users-container table,
+  .users-container th,
+  .users-container td {
+    display: block;
+    width: 100%;
+  }
+
+  /* Hide table headers and display them as labels for mobile view */
+  .users-container th {
+    display: none;
+  }
+
+  .users-container td {
+    position: relative;
+    padding-left: 50%;
+    text-align: left;
+  }
+
+  /* Add labels to table data for better readability on mobile */
+  .users-container td::before {
+    content: attr(data-label);
+    position: absolute;
+    left: 15px;
+    font-weight: bold;
+    color: #333;
+  }
+
+  /* Make the table horizontally scrollable */
+  .users-container {
+    overflow-x: auto;
+  }
+}

@@ -1,5 +1,9 @@
-<!-- admin-sidenav.component.html -->
-<nav>
+<nav [class.nav-open]="isSidebarOpen">
+    <div class="hamburger" (click)="toggleSidebar()">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
     <ul>
       <li><a routerLink="/admin/dashboard">Dashboard</a></li>
       <li><a routerLink="/admin/newproduct">New Product</a></li>
