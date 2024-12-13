@@ -117,5 +117,14 @@ class User
 
         return $stmt->execute();
     }
+
+    // Add this method to the User class
+public function getAllUsers()
+{
+    $query = "SELECT id, username, email, first_name, last_name, phone_number, role FROM " . $this->table_name;
+    $stmt = $this->conn->prepare($query);
+    $stmt->execute();
+    return $stmt;
+}
 }
 ?>

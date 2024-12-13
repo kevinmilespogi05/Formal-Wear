@@ -9,6 +9,7 @@ import { NewproductComponent } from './admin/newproduct/newproduct.component';
 import { ProductlistComponent } from './admin/productlist/productlist.component';
 import { AnalyticsComponent } from './admin/analytics/analytics.component';
 import { SidenavComponent as AdminSidenavComponent } from './admin/sidenav/sidenav.component';
+import { UsersComponent } from './admin/users/users.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: '/rent', pathMatch: 'full' },
@@ -39,6 +40,7 @@ export const routes: Routes = [
       { path: 'newproduct', component: NewproductComponent },
       { path: 'productlist', component: ProductlistComponent },
       { path: 'analytics', component: AnalyticsComponent },
+      { path: 'users', component: UsersComponent },
     ],
   },
   { path: '**', redirectTo: '/rent' },
