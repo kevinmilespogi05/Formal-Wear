@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';  // Import Router
 
+
 @Component({
   selector: 'app-login',
   standalone: true,
@@ -31,14 +32,8 @@ export class LoginComponent {
       (response: any) => {
         this.message = response.message; // Display success or error message
         if (response.message === 'Login successful.') {
-          // Check the role in the response
-          if (response.role === 'admin') {
-            // Redirect to the admin dashboard if the role is admin
-            this.router.navigate(['/admin/dashboard']);
-          } else {
-            // Redirect to the rent component for regular users
-            this.router.navigate(['/rent']);
-          }
+          // Redirect to the rent component on successful login
+          this.router.navigate(['/rent']); // Adjust this path to your actual RentComponent route
         }
       },
       (error: any) => {
