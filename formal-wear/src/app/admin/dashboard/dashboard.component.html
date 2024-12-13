@@ -1,1 +1,23 @@
-<p>dashboard works!</p>
+<div class="dashboard">
+    <h2>Manage Rentals</h2>
+  
+    <div *ngIf="rentals.length === 0">
+      <p>No rentals to manage.</p>
+    </div>
+  
+    <div *ngFor="let rental of rentals" class="rental-item">
+      <div class="rental-details">
+        <p><strong>Product ID:</strong> {{ rental.product_id }}</p>
+        <p><strong>Status:</strong> {{ rental.status }}</p>
+        <p><strong>Rental Date:</strong> {{ rental.rental_date }}</p>
+        <p><strong>Return Date:</strong> {{ rental.return_date }}</p>
+      </div>
+  
+      <div class="actions">
+        <button *ngIf="rental.status === 'pending'" (click)="confirmRental(rental.id)">Confirm</button>
+        <button *ngIf="rental.status === 'pending'" (click)="declineRental(rental.id)">Decline</button>
+        <button *ngIf="rental.status !== 'cancelled'" (click)="cancelRental(rental.id)">Cancel</button>
+      </div>
+    </div>
+  </div>
+  

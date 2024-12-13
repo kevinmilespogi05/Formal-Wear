@@ -40,6 +40,31 @@ export class RentService {
   }
 
   createRental(rentalData: any): Observable<any> {
-    return this.http.post<any>(`${this.apiUrl}/rental/createRental.php`, rentalData);
+    return this.http.post<any>(`${this.apiUrl}/rent/createRental.php`, rentalData);
+  }
+
+  // Method to confirm rental
+  confirmRental(rentalId: number): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}/rent/confirmRental.php`, { rental_id: rentalId });
+  }
+
+  // Method to decline rental
+  declineRental(rentalId: number): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}/rent/declineRental.php`, { rental_id: rentalId });
+  }
+
+  // Method to cancel rental
+  cancelRental(rentalId: number): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}/rent/cancelRental.php`, { rental_id: rentalId });
+  }
+
+  // Method to get all rentals for a user
+  getUserRentals(userId: number): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}/rent/getRentedProducts.php`, { user_id: userId });
+  }
+
+  // Method to get all rentals for admin
+  getAllRentals(): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/rent/getAllRentals.php`);
   }
 }
