@@ -1,52 +1,58 @@
 import { Component } from '@angular/core';
 import { RentService } from '../../services/rent.service';
-import { Router } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-newproduct',
+  standalone: true,
+  imports: [FormsModule],
   templateUrl: './newproduct.component.html',
-  styleUrls: ['./newproduct.component.css']
+  styleUrl: './newproduct.component.css'
 })
 export class NewproductComponent {
-  product = {
+  product: {
+    name: string;
+    price: number;
+    description: string;
+    image: File | null;
+  } = {
     name: '',
-    price: '',
+    price: 0,
     description: '',
     image: null
   };
-  message: string = '';
 
-  constructor(private rentService: RentService, private router: Router) {}
+  constructor(private rentService: RentService) {}
 
-  onFileChange(event: any) {
+  // Define the onFileChange method to handle file input change
+  onFileChange(event: any): void {
     const file = event.target.files[0];
     if (file) {
-      this.product.image = file;  // Store the image file
+      this.product.image = file;
     }
   }
 
   addProduct() {
     if (!this.product.name || !this.product.price || !this.product.description || !this.product.image) {
-      this.message = 'Please fill in all fields.';
+      alert("Please fill in all fields.");
       return;
     }
 
     const formData = new FormData();
-    formData.append('name', this.product.name);
-    formData.append('price', this.product.price);
-    formData.append('description', this.product.description);
-    formData.append('image', this.product.image);
+    formData.append('product_name', this.product.name);
+    formData.append('product_price', this.product.price.toString());
+    formData.append('product_description', this.product.description);
 
-    this.rentService.addProduct(formData).subscribe(
-      (response) => {
-        this.message = response.message;
-        if (response.message === 'Product added successfully.') {
-          this.router.navigate(['/productlist']);  // Navigate to product list
-        }
-      },
-      (error) => {
-        this.message = 'Error adding product. Please try again.';
-      }
-    );
+    // Only append the image if it is not null
+    if (this.product.image) {
+      formData.append('image', this.product.image);
+    }
+
+    this.rentService.addProduct(formData).subscribe(response => {
+      console.log('Product added:', response);
+      // Handle response and reset form
+    }, error => {
+      console.error('Error adding product:', error);
+    });
   }
 }
