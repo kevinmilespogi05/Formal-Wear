@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 14, 2024 at 02:23 AM
+-- Generation Time: Dec 14, 2024 at 03:30 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -28,21 +28,20 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `products` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
   `price` decimal(10,2) NOT NULL,
   `description` text DEFAULT NULL,
   `image` varchar(255) DEFAULT NULL,
-  `availability` tinyint(1) DEFAULT 1,
-  PRIMARY KEY (`id`)
+  `availability` tinyint(1) DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
 
 --
 -- Dumping data for table `products`
 --
 
-
+INSERT INTO `products` (`id`, `name`, `price`, `description`, `image`, `availability`) VALUES
+(6, 'Kevin', 99999999.99, 'adsadasdqdasdawd', '../../uploads/1734142038_suit4.jpg', 1);
 
 -- --------------------------------------------------------
 
@@ -58,6 +57,13 @@ CREATE TABLE `rentals` (
   `rental_date` datetime NOT NULL,
   `return_date` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `rentals`
+--
+
+INSERT INTO `rentals` (`id`, `user_id`, `product_id`, `status`, `rental_date`, `return_date`) VALUES
+(0, 1, 6, 'pending', '2024-12-14 02:12:39', '2024-12-21 02:12:39');
 
 -- --------------------------------------------------------
 
@@ -98,24 +104,6 @@ ALTER TABLE `products`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `rentals`
---
-ALTER TABLE `rentals`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `user_id` (`user_id`),
-  ADD KEY `product_id` (`product_id`);
-
---
--- Indexes for table `users`
---
-ALTER TABLE `users`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `username` (`username`),
-  ADD UNIQUE KEY `email` (`email`),
-  ADD KEY `idx_username` (`username`),
-  ADD KEY `idx_email` (`email`);
-
---
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -123,30 +111,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT for table `rentals`
---
-ALTER TABLE `rentals`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `users`
---
-ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
---
--- Constraints for dumped tables
---
-
---
--- Constraints for table `rentals`
---
-ALTER TABLE `rentals`
-  ADD CONSTRAINT `rentals_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`),
-  ADD CONSTRAINT `rentals_ibfk_2` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`);
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
