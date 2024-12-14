@@ -25,7 +25,7 @@ if ($num > 0) {
             'name' => $name,
             'description' => $description,
             'price' => $price,
-            'image_path' => $image_path
+            'image_path' => $image
         );
         array_push($products_arr['products'], $product_item);
     }

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { RentService } from '../../services/rent.service';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router'; // To handle redirection
+
 
 @Component({
   selector: 'app-rent',
@@ -12,7 +14,7 @@ import { CommonModule } from '@angular/common';
 export class RentComponent implements OnInit {
   products: any[] = [];
 
-  constructor(private rentService: RentService) {}
+  constructor(private rentService: RentService, private router: Router) {}
 
   ngOnInit() {
     this.loadProducts();
@@ -20,8 +22,8 @@ export class RentComponent implements OnInit {
 
   loadProducts() {
     this.rentService.getProducts().subscribe((response: any) => {
-      if (response && response.products) {
-        this.products = response.products;
+      if (response && Array.isArray(response) && response.length > 0) {
+        this.products = response;
       } else {
         this.products = [];
       }
@@ -46,4 +48,5 @@ export class RentComponent implements OnInit {
       }
     });
   }
+
 }

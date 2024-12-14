@@ -1,18 +1,18 @@
 <div class="product-list">
-    <h2>Available Products for Rent</h2>
-    
-    <div *ngIf="products.length === 0">
-      <p>No products available for rent.</p>
-    </div>
-  
-    <div *ngFor="let product of products" class="product-item">
-      <img [src]="product.image_path" alt="{{ product.name }}" class="product-image" />
-      <div class="product-details">
-        <h3>{{ product.name }}</h3>
-        <p>{{ product.description }}</p>
-        <p><strong>Price:</strong> ${{ product.price }}</p>
-      </div>
-      <button (click)="rentProduct(product.id)">Rent</button>
-    </div>
+  <h2>Available Products for Rent</h2>
+
+
+  <div *ngIf="products.length === 0">
+    <p>No products available for rent.</p>
   </div>
-  
+
+  <div *ngFor="let product of products" class="product-item">
+    <img [src]="product.image_path" alt="{{ product.product_name }}" class="product-image" />
+    <div class="product-details">
+      <h3>{{ product.product_name }}</h3>  <!-- Display product name -->
+      <p>{{ product.product_description }}</p>  <!-- Display product description -->
+      <p><strong>Price:</strong> ${{ product.product_price }}</p>  <!-- Display product price -->
+    </div>
+    <button (click)="rentProduct(product.id)">Rent</button>
+  </div>
+</div>

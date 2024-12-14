@@ -14,17 +14,19 @@ class Product {
         $this->conn = $db;
     }
 
-    // Create Product
+    // Method to create a product
     public function create() {
-        $query = "INSERT INTO " . $this->table_name . " SET name=:name, price=:price, description=:description, image=:image, availability=:availability";
-
+        $query = "INSERT INTO " . $this->table_name . " (name, price, description, image, availability) 
+                  VALUES (:name, :price, :description, :image, :availability)";
+        
         $stmt = $this->conn->prepare($query);
 
-        $stmt->bindParam(":name", $this->name);
-        $stmt->bindParam(":price", $this->price);
-        $stmt->bindParam(":description", $this->description);
-        $stmt->bindParam(":image", $this->image);
-        $stmt->bindParam(":availability", $this->availability);
+        // Bind values
+        $stmt->bindParam(':name', $this->name);
+        $stmt->bindParam(':price', $this->price);
+        $stmt->bindParam(':description', $this->description);
+        $stmt->bindParam(':image', $this->image);
+        $stmt->bindParam(':availability', $this->availability);  // Bind availability
 
         if ($stmt->execute()) {
             return true;
@@ -70,6 +72,16 @@ class Product {
     // Get All Products
     public function getAll() {
         $query = "SELECT id, name, price, description, image, availability FROM " . $this->table_name;
+
+        $stmt = $this->conn->prepare($query);
+        $stmt->execute();
+
+        return $stmt;
+    }
+
+    // Get Available Products (New method)
+    public function getAvailableProducts() {
+        $query = "SELECT id, name, price, description, image FROM " . $this->table_name . " WHERE availability = 1";
 
         $stmt = $this->conn->prepare($query);
         $stmt->execute();

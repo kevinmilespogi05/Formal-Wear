@@ -25,8 +25,8 @@ export class RentService {
     return this.http.post<any>(`${this.apiUrl}/product/addProduct.php`, productData);
   }
   
-  // Method to get all products
-  getProducts(): Observable<any> {
+   // Method to get all products
+   getProducts(): Observable<any> {
     return this.http.get<any>(`${this.apiUrl}/product/manage_products.php`);
   }
 
@@ -39,6 +39,10 @@ export class RentService {
     return this.http.get<any>(`${this.apiUrl}/users/getUsers.php`);
   }
 
+  getAvailableProducts(): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/product/getAvailableProducts.php`);
+  }
+  
   createRental(rentalData: any): Observable<any> {
     return this.http.post<any>(`${this.apiUrl}/rent/createRental.php`, rentalData);
   }

@@ -10,7 +10,6 @@ import { CommonModule } from '@angular/common';
   styleUrl: './productlist.component.css'
 })
 export class ProductlistComponent implements OnInit {
-  // Initialize products as an empty array
   products: any[] = [];
 
   constructor(private rentService: RentService) {}
@@ -21,12 +20,15 @@ export class ProductlistComponent implements OnInit {
 
   loadProducts() {
     this.rentService.getProducts().subscribe((response: any) => {
-      // Ensure response is an object with a 'products' array
-      if (response && response.products) {
-        this.products = response.products;  // Assign products array from response
+      console.log(response);  // Log the response for debugging
+      if (response && Array.isArray(response) && response.length > 0) {
+        this.products = response;  // Assign products array from response
       } else {
-        this.products = [];  // In case 'products' is undefined or null in the response
+        this.products = [];  // If no products are returned, assign an empty array
       }
+    }, error => {
+      console.error('Error fetching products:', error);
+      this.products = [];  // Ensure products is always defined
     });
   }
 
