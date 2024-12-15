@@ -10,7 +10,6 @@ import { ProductlistComponent } from './admin/productlist/productlist.component'
 import { AnalyticsComponent } from './admin/analytics/analytics.component';
 import { SidenavComponent as AdminSidenavComponent } from './admin/sidenav/sidenav.component';
 import { UsersComponent } from './admin/users/users.component';
-import { CartComponent } from './user/cart/cart.component';
 
 
 export const routes: Routes = [

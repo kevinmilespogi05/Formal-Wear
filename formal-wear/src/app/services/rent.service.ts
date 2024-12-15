@@ -57,18 +57,29 @@ export class RentService {
     return this.http.post<any>(`${this.apiUrl}/rent/declineRental.php`, { rental_id: rentalId });
   }
 
-  // Method to cancel rental
+  // Get all rentals for a user, including product details
+  getUserRentals(userId: number): Observable<any[]> {
+    return this.http.post<any[]>(`${this.apiUrl}/rent/getRentedProducts.php`, { user_id: userId });
+  }
+  
+
+  // Cancel a rental
   cancelRental(rentalId: number): Observable<any> {
+    console.log('Sending rental_id:', rentalId);  // Debugging log
     return this.http.post<any>(`${this.apiUrl}/rent/cancelRental.php`, { rental_id: rentalId });
   }
-
-  // Method to get all rentals for a user
-  getUserRentals(userId: number): Observable<any> {
-    return this.http.post<any>(`${this.apiUrl}/rent/getRentedProducts.php`, { user_id: userId });
-  }
-
+  
   // Method to get all rentals for admin
   getAllRentals(): Observable<any> {
     return this.http.get<any>(`${this.apiUrl}/rent/getAllRentals.php`);
   }
+
+  processPayment(paymentData: any): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}/payment/processPayment.php`, paymentData);
+  }
+  
+  getUserById(userId: number): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}/users/get_profile.php`, { user_id: userId });
+  }
+  
 }

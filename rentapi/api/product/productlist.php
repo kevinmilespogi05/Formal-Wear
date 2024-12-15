@@ -16,10 +16,10 @@ if ($stmt->rowCount() > 0) {
     while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
         $product_item = [
             'id' => $row['id'],
-            'product_name' => $row['name'], // Change 'name' to 'product_name'
-            'product_price' => $row['price'], // Change 'price' to 'product_price'
-            'product_description' => $row['description'], // Change 'description' to 'product_description'
-            'image_path' => $row['image'] // Change 'image' to 'image_path'
+            'product_name' => $row['name'],
+            'product_price' => $row['price'],
+            'product_description' => $row['description'],
+            'image_path' => $row['image']
         ];
         $products_arr[] = $product_item;
     }

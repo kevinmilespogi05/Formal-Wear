@@ -22,8 +22,8 @@ if (isset($data->product_name) && isset($data->product_price) && isset($data->pr
     // Move the uploaded image to the desired directory
     if (move_uploaded_file($image['tmp_name'], $image_target)) {
         // Insert product details into database
-        $query = "INSERT INTO products (product_name, product_price, product_description, image_path) 
-                  VALUES (:product_name, :product_price, :product_description, :image_path)";
+        $query = "INSERT INTO products (name, price, description, image, availability) 
+                  VALUES (:product_name, :product_price, :product_description, :image_path, 1)";
         
         $stmt = $db->prepare($query);
         $stmt->bindParam(':product_name', $product_name);

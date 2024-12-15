@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { RentService } from '../../services/rent.service';
 import { FormsModule } from '@angular/forms';
+import Swal from 'sweetalert2';  // Import SweetAlert2
 
 @Component({
   selector: 'app-newproduct',
@@ -34,8 +35,14 @@ export class NewproductComponent {
   }
 
   addProduct() {
+    // Validate the form
     if (!this.product.name || !this.product.price || !this.product.description || !this.product.image) {
-      alert("Please fill in all fields.");
+      Swal.fire({
+        title: 'Missing Fields',
+        text: 'Please fill in all fields before submitting.',
+        icon: 'warning',
+        confirmButtonText: 'OK'
+      });
       return;
     }
 
@@ -50,8 +57,20 @@ export class NewproductComponent {
     }
 
     this.rentService.addProduct(formData).subscribe(response => {
+      Swal.fire({
+        title: 'Success!',
+        text: 'Product added successfully.',
+        icon: 'success',
+        confirmButtonText: 'OK'
+      });
       console.log('Product added:', response);
     }, error => {
+      Swal.fire({
+        title: 'Error!',
+        text: 'There was an error adding the product.',
+        icon: 'error',
+        confirmButtonText: 'OK'
+      });
       console.error('Error adding product:', error);
     });
   }

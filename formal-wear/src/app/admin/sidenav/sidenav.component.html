@@ -1,16 +1,17 @@
 <nav [class.nav-open]="isSidebarOpen">
-    <div class="hamburger" (click)="toggleSidebar()">
-      <div></div>
-      <div></div>
-      <div></div>
-    </div>
-    <ul>
-      <li><a routerLink="/admin/dashboard">Dashboard</a></li>
-      <li><a routerLink="/admin/newproduct">New Product</a></li>
-      <li><a routerLink="/admin/productlist">Product List</a></li>
-      <li><a routerLink="/admin/analytics">Analytics</a></li>
-      <li><a routerLink="/admin/users">Users</a></li>
-    </ul>
-  </nav>
-  <router-outlet></router-outlet>
-  
+  <div class="hamburger" (click)="toggleSidebar()">
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+  <ul>
+    <li><a routerLink="/admin/dashboard">Dashboard</a></li>
+    <li><a routerLink="/admin/newproduct">New Product</a></li>
+    <li><a routerLink="/admin/productlist">Product List</a></li>
+    <li><a routerLink="/admin/analytics">Analytics</a></li>
+    <li><a routerLink="/admin/users">Users</a></li>
+    <!-- Logout button -->
+    <li><button (click)="logout()" class="logout-btn">Logout</button></li>
+  </ul>
+</nav>
+<router-outlet></router-outlet>

@@ -30,13 +30,13 @@ if (
 
     // Check if the username already exists
     if ($user->usernameExists()) {
-        echo json_encode(array("message" => "Username already exists."));
+        echo json_encode(array("success" => false, "message" => "Username already exists."));
         exit;
     }
 
     // Check if the email already exists
     if ($user->emailExists()) {
-        echo json_encode(array("message" => "Email already exists."));
+        echo json_encode(array("success" => false, "message" => "Email already exists."));
         exit;
     }
 
@@ -51,11 +51,11 @@ if (
 
     // Try to register the user
     if ($user->register()) {
-        echo json_encode(array("message" => "User registered successfully."));
+        echo json_encode(array("success" => true, "message" => "User registered successfully."));
     } else {
-        echo json_encode(array("message" => "User registration failed."));
+        echo json_encode(array("success" => false, "message" => "User registration failed."));
     }
 } else {
-    echo json_encode(array("message" => "Please fill in all required fields."));
+    echo json_encode(array("success" => false, "message" => "Please fill in all required fields."));
 }
 ?>

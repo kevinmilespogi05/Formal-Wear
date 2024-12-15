@@ -126,5 +126,15 @@ public function getAllUsers()
     $stmt->execute();
     return $stmt;
 }
+// User.php (in models directory)
+
+public function getUserById($user_id) {
+    $query = "SELECT id, username, first_name, last_name FROM users WHERE id = :id LIMIT 1";
+    $stmt = $this->conn->prepare($query);
+    $stmt->bindParam(':id', $user_id);
+    $stmt->execute();
+    return $stmt;
+}
+
 }
 ?>

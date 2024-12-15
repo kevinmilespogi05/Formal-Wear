@@ -79,16 +79,14 @@ class Product {
         return $stmt;
     }
 
-    // Get Available Products (New method)
+    // Get Available Products
     public function getAvailableProducts() {
-        $query = "SELECT id, name, price, description, image FROM " . $this->table_name . " WHERE availability = 1";
-
+        $query = "SELECT id, name, price, description, image FROM products WHERE availability = 1";
         $stmt = $this->conn->prepare($query);
         $stmt->execute();
-
         return $stmt;
     }
-
+    
     // Get Product by ID
     public function getById() {
         $query = "SELECT id, name, price, description, image, availability FROM " . $this->table_name . " WHERE id = :id LIMIT 1";

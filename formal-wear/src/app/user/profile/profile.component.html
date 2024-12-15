@@ -1,1 +1,25 @@
-<p>profile works!</p>
+<div class="profile-container">
+    <h2>Your Rentals</h2>
+  
+    <div *ngIf="isLoading" class="loading">Loading...</div>
+  
+    <div *ngIf="!isLoading">
+      <div *ngIf="userRentals.length === 0" class="no-rentals">No rentals found.</div>
+      
+      <div *ngFor="let rental of userRentals" class="rental-item">
+        <h3>Rental ID: {{ rental.id }}</h3>
+        <p>Status: {{ rental.status }}</p>
+        <p>Rental Date: {{ rental.rental_date | date:'short' }}</p>
+        <p>Return Date: {{ rental.return_date | date:'short' }}</p>
+  
+        <div class="product-details">
+          <h4>Product Details:</h4>
+          <p class="product-name">{{ rental.product.name }}</p>
+          <p class="product-price">${{ rental.product.price }}</p>
+          <p class="product-description">{{ rental.product.description }}</p>
+        </div>
+  
+        <button (click)="cancelRental(rental.id)" *ngIf="rental.status !== 'cancelled'">Cancel Rental</button>
+    </div>
+    </div>
+  </div>

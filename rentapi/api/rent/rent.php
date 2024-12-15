@@ -23,10 +23,8 @@ if (isset($data->user_id)) {
 
         // Check if the user is an admin or a regular user
         if ($role == 'admin') {
-            // Admin access: Show all rented products
             echo json_encode(["message" => "Admin access granted."]);
         } else {
-            // Regular user access: Show only user-specific rented products
             echo json_encode(["message" => "User access granted."]);
         }
     } else {

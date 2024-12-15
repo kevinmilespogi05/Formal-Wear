@@ -1,23 +1,26 @@
 <div class="dashboard">
-    <h2>Manage Rentals</h2>
-  
-    <div *ngIf="rentals.length === 0">
-      <p>No rentals to manage.</p>
+  <h2>Manage Rentals</h2>
+
+  <div *ngIf="rentals.length === 0">
+    <p>No pending rentals to manage.</p>
+  </div>
+
+  <div *ngFor="let rental of rentals" class="rental-item">
+    <div class="rental-details">
+      <p><strong>Product ID:</strong> {{ rental.product_id }}</p>
+      <p><strong>Rented by:</strong> {{ rental.username }}</p> <!-- Display the username -->
+      <p><strong>Status:</strong> {{ rental.status }}</p>
+      <p><strong>Rental Date:</strong> {{ rental.rental_date | date }}</p>
+      <p><strong>Return Date:</strong> {{ rental.return_date | date }}</p>
     </div>
-  
-    <div *ngFor="let rental of rentals" class="rental-item">
-      <div class="rental-details">
-        <p><strong>Product ID:</strong> {{ rental.product_id }}</p>
-        <p><strong>Status:</strong> {{ rental.status }}</p>
-        <p><strong>Rental Date:</strong> {{ rental.rental_date }}</p>
-        <p><strong>Return Date:</strong> {{ rental.return_date }}</p>
-      </div>
-  
-      <div class="actions">
-        <button *ngIf="rental.status === 'pending'" (click)="confirmRental(rental.id)">Confirm</button>
-        <button *ngIf="rental.status === 'pending'" (click)="declineRental(rental.id)">Decline</button>
-        <button *ngIf="rental.status !== 'cancelled'" (click)="cancelRental(rental.id)">Cancel</button>
-      </div>
+
+    <div class="actions">
+      <!-- Confirm and Decline buttons only for pending rentals -->
+      <button *ngIf="rental.status === 'pending'" (click)="confirmRental(rental.id)" class="btn btn-confirm">Confirm</button>
+      <button *ngIf="rental.status === 'pending'" (click)="declineRental(rental.id)" class="btn btn-decline">Decline</button>
+
+      <!-- Cancel button for any status except 'cancelled' -->
+      <button *ngIf="rental.status !== 'cancelled'" (click)="cancelRental(rental.id)" class="btn btn-cancel">Cancel</button>
     </div>
   </div>
-  
+</div>
