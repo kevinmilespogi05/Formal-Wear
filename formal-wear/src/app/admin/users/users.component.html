@@ -1,28 +1,30 @@
-<div class="users-container">
-    <h2>All Users</h2>
-    <table>
-      <thead>
-        <tr>
-          <th>ID</th>
-          <th>Username</th>
-          <th>Email</th>
-          <th>First Name</th>
-          <th>Last Name</th>
-          <th>Phone Number</th>
-          <th>Role</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let user of users">
-          <td data-label="ID">{{ user.id }}</td>
-          <td data-label="Username">{{ user.username }}</td>
-          <td data-label="Email">{{ user.email }}</td>
-          <td data-label="First Name">{{ user.first_name }}</td>
-          <td data-label="Last Name">{{ user.last_name }}</td>
-          <td data-label="Phone Number">{{ user.phone_number }}</td>
-          <td data-label="Role">{{ user.role }}</td>
-        </tr>        
-      </tbody>
-    </table>
-  </div>
+<div class="users-container container">
+  <h2><i class="bi bi-person-lines-fill"></i> All Users</h2>
   
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Username</th>
+        <th>Email</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Phone Number</th>
+        <th>Role <i class="bi bi-sort-down-alt"></i></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users">
+        <td data-label="ID">{{ user.id }}</td>
+        <td data-label="Username">{{ user.username }}</td>
+        <td data-label="Email">{{ user.email }}</td>
+        <td data-label="First Name">{{ user.first_name }}</td>
+        <td data-label="Last Name">{{ user.last_name }}</td>
+        <td data-label="Phone Number">{{ user.phone_number }}</td>
+        <td data-label="Role">
+          <i class="bi bi-person-badge"></i> {{ user.role }}
+        </td>
+      </tr>        
+    </tbody>
+  </table>
+</div>

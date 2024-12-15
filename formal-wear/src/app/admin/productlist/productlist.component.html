@@ -1,18 +1,22 @@
-<div class="product-list">
-  <h2>Product List</h2>
+<div class="product-list container">
+  <h2 class="text-center my-4"><i class="bi bi-box"></i> Product List</h2>
   
   <!-- Displaying products -->
-  <div *ngIf="products.length === 0">
+  <div *ngIf="products.length === 0" class="no-products-message">
     <p>No products available.</p>
   </div>
   
-  <div *ngFor="let product of products" class="product-item">
-    <img [src]="product.image_path" alt="{{ product.product_name }}" class="product-image" />
-    <div class="product-details">
-      <h3>{{ product.product_name }}</h3>
-      <p>{{ product.product_description }}</p>
-      <p><strong>Price:</strong> ${{ product.product_price }}</p>
+  <div class="row">
+    <div *ngFor="let product of products" class="col-lg-4 col-md-6 col-sm-12 mb-4">
+      <div class="product-item card shadow-sm">
+        <img [src]="product.image_path" alt="{{ product.product_name }}" class="product-image card-img-top" />
+        <div class="card-body">
+          <h3 class="card-title">{{ product.product_name }}</h3>
+          <p class="card-text">{{ product.product_description }}</p>
+          <p><strong>Price:</strong> ${{ product.product_price }}</p>
+          <button (click)="deleteProduct(product.id)" class="btn btn-danger w-100">Delete</button>
+        </div>
+      </div>
     </div>
-    <button (click)="deleteProduct(product.id)">Delete</button>
   </div>
 </div>

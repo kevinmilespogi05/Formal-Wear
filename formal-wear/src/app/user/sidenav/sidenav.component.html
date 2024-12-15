@@ -1,15 +1,25 @@
 <nav [class.nav-open]="isSidebarOpen">
-    <div class="hamburger" (click)="toggleSidebar()">
-      <div></div>
-      <div></div>
-      <div></div>
-    </div>
-    <ul>
-      <li><a routerLink="/rent">Rent A Product</a></li>
-      <li><a routerLink="/profile">Profile</a></li>
-      <!-- Add Logout button -->
-      <li><a href="javascript:void(0)" (click)="logout()">Logout</a></li>
-    </ul>
-  </nav>
-  <router-outlet></router-outlet>
-  
+  <div class="hamburger" (click)="toggleSidebar()">
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+  <ul>
+    <li>
+      <a routerLink="/rent">
+        <i class="bi bi-box-seam"></i> Rent A Product
+      </a>
+    </li>
+    <li>
+      <a routerLink="/profile">
+        <i class="bi bi-cart"></i> Cart
+      </a>
+    </li>
+    <li>
+      <a href="javascript:void(0)" (click)="logout()" class="logout">
+        <i class="bi bi-box-arrow-right"></i> Logout
+      </a>
+    </li>
+  </ul>
+</nav>
+<router-outlet></router-outlet>

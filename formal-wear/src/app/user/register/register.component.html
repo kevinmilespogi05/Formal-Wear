@@ -1,38 +1,38 @@
 <div class="register-container">
-  <h2>Register</h2>
+  <h2><i class="bi bi-person-plus"></i> Register</h2>
 
   <form (ngSubmit)="register()">
     <div class="form-group">
-      <label for="username">Username</label>
+      <label for="username"><i class="bi bi-person"></i> Username</label>
       <input type="text" id="username" [(ngModel)]="username" name="username" required />
     </div>
 
     <div class="form-group">
-      <label for="email">Email</label>
+      <label for="email"><i class="bi bi-envelope"></i> Email</label>
       <input type="email" id="email" [(ngModel)]="email" name="email" required />
     </div>
 
     <div class="form-group">
-      <label for="password">Password</label>
+      <label for="password"><i class="bi bi-lock"></i> Password</label>
       <input type="password" id="password" [(ngModel)]="password" name="password" required />
     </div>
 
     <div class="form-group">
-      <label for="firstName">First Name</label>
+      <label for="firstName"><i class="bi bi-person-circle"></i> First Name</label>
       <input type="text" id="firstName" [(ngModel)]="firstName" name="firstName" required />
     </div>
 
     <div class="form-group">
-      <label for="lastName">Last Name</label>
+      <label for="lastName"><i class="bi bi-person-fill"></i> Last Name</label>
       <input type="text" id="lastName" [(ngModel)]="lastName" name="lastName" required />
     </div>
 
     <div class="form-group">
-      <label for="phoneNumber">Phone Number</label>
+      <label for="phoneNumber"><i class="bi bi-telephone"></i> Phone Number</label>
       <input type="text" id="phoneNumber" [(ngModel)]="phoneNumber" name="phoneNumber" required />
     </div>
 
-    <button type="submit">Register</button>
+    <button type="submit"><i class="bi bi-person-plus-fill"></i> Register</button>
   </form>
 
   <div *ngIf="message" class="message">{{ message }}</div>

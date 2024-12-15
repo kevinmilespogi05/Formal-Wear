@@ -1,21 +1,21 @@
 <div class="login-container">
-  <h2>Login</h2>
+  <h2><i class="bi bi-lock"></i> Login</h2>
 
   <form (ngSubmit)="login()">
     <div class="form-group">
-      <label for="username">Username</label>
+      <label for="username"><i class="bi bi-person"></i> Username</label>
       <input type="text" id="username" [(ngModel)]="username" name="username" required />
     </div>
 
     <div class="form-group">
-      <label for="password">Password</label>
+      <label for="password"><i class="bi bi-key"></i> Password</label>
       <input type="password" id="password" [(ngModel)]="password" name="password" required />
     </div>
 
-    <button type="submit">Login</button>
+    <button type="submit"><i class="bi bi-box-arrow-in-right"></i> Login</button>
   </form>
 
   <div *ngIf="message" class="message">{{ message }}</div>
 
-  <button type="button" (click)="navigateToRegister()">Register</button>
+  <button type="button" (click)="navigateToRegister()"><i class="bi bi-person-plus"></i> Register</button>
 </div>

@@ -26,15 +26,39 @@ nav ul li a {
   color: #ecf0f1;
   text-decoration: none;
   font-size: 16px;
-  display: block;
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Space between icon and text */
   transition: background-color 0.3s ease;
+}
+
+nav ul li a i {
+  font-size: 18px; /* Icon size */
 }
 
 nav ul li a:hover {
   background-color: #16a085;
 }
 
-/* Hide the sidebar on smaller screens by default */
+/* Style the logout button differently */
+nav ul li a.logout {
+  color: #e74c3c; /* Red color for logout */
+  font-weight: bold;
+}
+
+nav ul li a.logout:hover {
+  background-color: #c0392b; /* Darker red on hover */
+}
+
+nav ul li a.logout i {
+  color: #e74c3c;
+}
+
+nav ul li a.logout:hover i {
+  color: #c0392b;
+}
+
+/* Responsive styling for smaller screens */
 @media (max-width: 768px) {
   nav {
     width: 100%;
@@ -58,7 +82,6 @@ nav ul li a:hover {
     font-size: 14px;
   }
 
-  /* For the hamburger menu (toggle) */
   .hamburger {
     display: block;
     position: absolute;
@@ -75,13 +98,11 @@ nav ul li a:hover {
     margin: 5px 0;
   }
 
-  /* Show the sidebar when the menu is toggled */
   .nav-open {
     transform: translateX(0);
   }
 }
 
-/* Optional styling for content */
 .router-outlet {
   margin-left: 250px; /* Space for sidebar */
   padding: 20px;
@@ -93,26 +114,3 @@ nav ul li a:hover {
     margin-left: 0; /* Remove space for sidebar on small screens */
   }
 }
-/* Style for logout button */
-nav ul li a {
-  color: #ecf0f1;
-  text-decoration: none;
-  font-size: 16px;
-  display: block;
-  transition: background-color 0.3s ease;
-}
-
-nav ul li a:hover {
-  background-color: #16a085;
-}
-
-/* Style the logout button differently */
-nav ul li a.logout {
-  color: #e74c3c;  /* Red color for logout */
-  font-weight: bold;
-}
-
-nav ul li a.logout:hover {
-  background-color: #c0392b;  /* Darker red on hover */
-}
-

@@ -1,25 +1,31 @@
 <div class="profile-container">
-    <h2>Your Rentals</h2>
-  
-    <div *ngIf="isLoading" class="loading">Loading...</div>
-  
-    <div *ngIf="!isLoading">
-      <div *ngIf="userRentals.length === 0" class="no-rentals">No rentals found.</div>
-      
-      <div *ngFor="let rental of userRentals" class="rental-item">
-        <h3>Rental ID: {{ rental.id }}</h3>
-        <p>Status: {{ rental.status }}</p>
-        <p>Rental Date: {{ rental.rental_date | date:'short' }}</p>
-        <p>Return Date: {{ rental.return_date | date:'short' }}</p>
-  
-        <div class="product-details">
-          <h4>Product Details:</h4>
-          <p class="product-name">{{ rental.product.name }}</p>
-          <p class="product-price">${{ rental.product.price }}</p>
-          <p class="product-description">{{ rental.product.description }}</p>
-        </div>
-  
-        <button (click)="cancelRental(rental.id)" *ngIf="rental.status !== 'cancelled'">Cancel Rental</button>
+  <h2><i class="bi bi-person-check"></i> Your Rentals</h2>
+
+  <div *ngIf="isLoading" class="loading">
+    <i class="bi bi-arrow-clockwise"></i> Loading...
+  </div>
+
+  <div *ngIf="!isLoading">
+    <div *ngIf="userRentals.length === 0" class="no-rentals">
+      <i class="bi bi-exclamation-circle"></i> No rentals found.
     </div>
+    
+    <div *ngFor="let rental of userRentals" class="rental-item">
+      <h3><i class="bi bi-card-list"></i> Rental ID: {{ rental.id }}</h3>
+      <p><i class="bi bi-info-circle"></i> Status: {{ rental.status }}</p>
+      <p><i class="bi bi-calendar-check"></i> Rental Date: {{ rental.rental_date | date:'short' }}</p>
+      <p><i class="bi bi-calendar-x"></i> Return Date: {{ rental.return_date | date:'short' }}</p>
+
+      <div class="product-details">
+        <h4><i class="bi bi-box"></i> Product Details:</h4>
+        <p class="product-name"><i class="bi bi-tag"></i> {{ rental.product.name }}</p>
+        <p class="product-price"><i class="bi bi-currency-dollar"></i> ${{ rental.product.price }}</p>
+        <p class="product-description">{{ rental.product.description }}</p>
+      </div>
+
+      <button (click)="cancelRental(rental.id)" *ngIf="rental.status !== 'cancelled'">
+        <i class="bi bi-x-circle"></i> Cancel Rental
+      </button>
     </div>
   </div>
+</div>

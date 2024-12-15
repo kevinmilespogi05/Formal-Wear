@@ -1,11 +1,11 @@
 /* Container for the users table */
 .users-container {
-  max-width: 100%;
-  margin: 0 auto;
+  max-width:60%;
+  margin: 20px auto;
   padding: 20px;
-  background-color: #f9f9f9;
-  border-radius: 8px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   overflow-x: auto; /* Makes the table horizontally scrollable on smaller screens */
 }
 
@@ -13,8 +13,13 @@
 .users-container h2 {
   text-align: center;
   color: #333;
-  font-size: 24px;
+  font-size: 28px;
   margin-bottom: 20px;
+}
+
+.users-container h2 i {
+  color: #2ecc71;
+  margin-right: 10px;
 }
 
 /* Table styling */
@@ -28,21 +33,40 @@
 .users-container th {
   background-color: #2ecc71;
   color: white;
-  padding: 12px 15px;
+  padding: 16px 20px;
   text-align: left;
   font-size: 16px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.users-container th i {
+  font-size: 18px;
+  margin-left: 5px;
 }
 
 /* Table row styling */
 .users-container td {
-  padding: 12px 15px;
+  padding: 14px 20px;
   border-bottom: 1px solid #ddd;
-  font-size: 14px;
+  font-size: 15px;
 }
 
 /* Hover effect on table rows */
 .users-container tr:hover {
-  background-color: #f1f1f1;
+  background-color: #f9f9f9;
+  transition: background-color 0.3s ease;
+}
+
+/* Role icon styling */
+.users-container td i {
+  margin-left: 10px;
+  color: #333;
+}
+
+/* Styling for icons */
+.users-container td i.bi {
+  font-size: 18px;
 }
 
 /* Responsive styling for mobile screens */

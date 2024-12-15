@@ -1,8 +1,8 @@
 <div class="product-list">
-  <h2>Available Products for Rent</h2>
+  <h2><i class="bi bi-box"></i> Available Products for Rent</h2>
 
   <div *ngIf="products.length === 0">
-    <p>No products available for rent.</p>
+    <p><i class="bi bi-exclamation-circle"></i> No products available for rent.</p>
   </div>
 
   <div *ngFor="let product of products" class="product-item">
@@ -10,15 +10,19 @@
     <div class="product-details">
       <h3>{{ product.product_name }}</h3>
       <p>{{ product.product_description }}</p>
-      <p><strong>Price:</strong> ${{ product.product_price }}</p>
+      <p><strong><i class="bi bi-currency-dollar"></i> Price:</strong> ${{ product.product_price }}</p>
     </div>
-    <button (click)="rentProduct(product.id)">Rent</button>
+    <button (click)="rentProduct(product.id)">
+      <i class="bi bi-cart-plus"></i> Rent
+    </button>
   </div>
 
   <!-- Payment Option -->
   <div *ngIf="selectedProduct">
-    <h3>Payment for Product: {{ selectedProduct.product_name }}</h3>
-    <p>Total Price: ${{ selectedProduct.product_price }}</p>
-    <button (click)="processPayment()">Pay Now</button>
+    <h3><i class="bi bi-credit-card"></i> Payment for Product: {{ selectedProduct.product_name }}</h3>
+    <p><strong><i class="bi bi-currency-dollar"></i> Total Price:</strong> ${{ selectedProduct.product_price }}</p>
+    <button (click)="processPayment()">
+      <i class="bi bi-wallet"></i> Pay Now
+    </button>
   </div>
 </div>

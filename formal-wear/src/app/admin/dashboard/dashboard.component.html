@@ -16,11 +16,17 @@
 
     <div class="actions">
       <!-- Confirm and Decline buttons only for pending rentals -->
-      <button *ngIf="rental.status === 'pending'" (click)="confirmRental(rental.id)" class="btn btn-confirm">Confirm</button>
-      <button *ngIf="rental.status === 'pending'" (click)="declineRental(rental.id)" class="btn btn-decline">Decline</button>
+      <button *ngIf="rental.status === 'pending'" (click)="confirmRental(rental.id)" class="btn btn-confirm">
+        <i class="bi bi-check-circle"></i> Confirm
+      </button>
+      <button *ngIf="rental.status === 'pending'" (click)="declineRental(rental.id)" class="btn btn-decline">
+        <i class="bi bi-x-circle"></i> Decline
+      </button>
 
       <!-- Cancel button for any status except 'cancelled' -->
-      <button *ngIf="rental.status !== 'cancelled'" (click)="cancelRental(rental.id)" class="btn btn-cancel">Cancel</button>
+      <button *ngIf="rental.status !== 'cancelled'" (click)="cancelRental(rental.id)" class="btn btn-cancel">
+        <i class="bi bi-trash"></i> Cancel
+      </button>
     </div>
   </div>
 </div>
