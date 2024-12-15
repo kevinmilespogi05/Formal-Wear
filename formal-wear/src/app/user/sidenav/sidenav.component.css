@@ -9,12 +9,16 @@ nav {
   padding-top: 20px;
   z-index: 100;
   transition: transform 0.3s ease;
+  display: flex;
+  flex-direction: column; /* Make the nav a flex container */
 }
 
+/* Styling for the list and items */
 nav ul {
   list-style-type: none;
   padding: 0;
   margin: 0;
+  flex-grow: 1; /* This makes the list grow to fill available space */
 }
 
 nav ul li {
@@ -44,6 +48,7 @@ nav ul li a:hover {
 nav ul li a.logout {
   color: #e74c3c; /* Red color for logout */
   font-weight: bold;
+  margin-top: auto; /* Push the logout button to the bottom */
 }
 
 nav ul li a.logout:hover {

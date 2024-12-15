@@ -30,12 +30,12 @@
         <i class="bi bi-person"></i> Users
       </a>
     </li>
-    <!-- Logout button -->
-    <li>
-      <button (click)="logout()" class="logout-btn btn btn-danger w-100 text-white py-2">
-        <i class="bi bi-box-arrow-right"></i> Logout
-      </button>
-    </li>
   </ul>
+  <!-- Logout button -->
+  <div class="logout-container">
+    <button (click)="logout()" class="logout-btn btn btn-danger w-100 text-white py-2">
+      <i class="bi bi-box-arrow-right"></i> Logout
+    </button>
+  </div>
 </nav>
 <router-outlet></router-outlet>
