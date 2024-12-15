@@ -79,4 +79,7 @@ export class RegisterComponent {
       }
     );
   }
+  navigateToLogin() {
+    this.router.navigate(['/login']);  // Navigate to the login route
+  }
 }

@@ -1,28 +1,30 @@
 /* Container for the register form */
 .register-container {
-  max-width: 500px;
+  max-width: 350px; /* Further reduced width */
   margin: 0 auto;
-  padding: 30px;
+  padding: 15px; /* Further reduced padding */
   background-color: #ffffff;
-  border-radius: 10px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  border-radius: 25px; /* Slightly smaller border-radius */
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1); /* Smaller shadow */
   text-align: center;
   border: 1px solid #ecf0f1;
+  overflow: hidden;
+  margin-top: 7%;
 }
 
 /* Title styling */
 .register-container h2 {
   color: #2c3e50;
-  font-size: 28px;
-  margin-bottom: 25px;
+  font-size: 20px; /* Smaller font-size */
+  margin-bottom: 12px; /* Reduced margin */
   font-weight: 600;
+  letter-spacing: 0.5px;
 }
 
 /* Form styling */
 form {
   display: flex;
   flex-direction: column;
-  gap: 20px;
 }
 
 /* Form group styling */
@@ -30,73 +32,190 @@ form {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  position: relative;
 }
 
 /* Label styling */
 .form-group label {
-  font-size: 16px;
+  font-size: 12px; /* Smaller font-size */
   color: #34495e;
-  margin-bottom: 8px;
+  margin-bottom: 4px; /* Reduced margin */
   font-weight: 500;
+  transition: 0.2s;
 }
 
 /* Input field styling */
 .form-group input {
   width: 100%;
-  padding: 12px;
-  font-size: 16px;
+  padding: 8px 10px; /* Reduced padding */
+  font-size: 12px; /* Smaller font-size */
   border: 1px solid #bdc3c7;
-  border-radius: 5px;
+  border-radius: 25px; /* Smaller border-radius */
   box-sizing: border-box;
-  transition: border-color 0.3s ease;
+  background-color: #f7f9fb;
+  transition: all 0.3s ease;
 }
 
+/* Input field focus effect */
 .form-group input:focus {
   border-color: #3498db;
+  background-color: #fff;
   outline: none;
 }
 
 /* Button styling */
 button {
-  background-color: #3498db;
+  background-color: #29b352;
   color: white;
-  padding: 12px 18px;
-  font-size: 18px;
+  padding: 8px 12px; /* Reduced padding */
+  font-size: 14px; /* Smaller font-size */
   border: none;
-  border-radius: 5px;
+  margin: 2px;
+  border-radius: 25px; /* Smaller border-radius */
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 3px 10px rgba(52, 152, 219, 0.3); /* Smaller shadow */
 }
 
 button:hover {
-  background-color: #2980b9;
-  transform: translateY(-2px);
+  background-color: #3ec961;
+  transform: translateY(-1px); /* Slightly reduced hover effect */
+}
+
+button:active {
+  transform: translateY(1px);
+}
+
+button[type="button"] {
+  background-color: #3498db;
 }
 
 /* Message styling */
 .message {
   color: #e74c3c;
-  margin-top: 10px;
-  font-size: 14px;
+  margin-top: 6px; /* Reduced margin */
+  font-size: 12px; /* Smaller font-size */
 }
 
-/* Responsive Design for mobile */
-@media (max-width: 768px) {
-  /* Adjust form container */
-  .register-container {
-    padding: 20px;
-    max-width: 100%;
+.area{
+  background: #413d36;
+  width: 100%;
+  height:100vh;
+
+
+}
+
+.circles{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.circles li{
+  position: absolute;
+  display: block;
+  list-style: none;
+  width: 20px;
+  height: 20px;
+  background: rgba(255, 255, 255, 0.2);
+  animation: animate 25s linear infinite;
+  bottom: -150px;
+
+}
+
+.circles li:nth-child(1){
+  left: 25%;
+  width: 80px;
+  height: 80px;
+  animation-delay: 0s;
+}
+
+
+.circles li:nth-child(2){
+  left: 10%;
+  width: 20px;
+  height: 20px;
+  animation-delay: 2s;
+  animation-duration: 12s;
+}
+
+.circles li:nth-child(3){
+  left: 70%;
+  width: 20px;
+  height: 20px;
+  animation-delay: 4s;
+}
+
+.circles li:nth-child(4){
+  left: 40%;
+  width: 60px;
+  height: 60px;
+  animation-delay: 0s;
+  animation-duration: 18s;
+}
+
+.circles li:nth-child(5){
+  left: 65%;
+  width: 20px;
+  height: 20px;
+  animation-delay: 0s;
+}
+
+.circles li:nth-child(6){
+  left: 75%;
+  width: 110px;
+  height: 110px;
+  animation-delay: 3s;
+}
+
+.circles li:nth-child(7){
+  left: 35%;
+  width: 150px;
+  height: 150px;
+  animation-delay: 7s;
+}
+
+.circles li:nth-child(8){
+  left: 50%;
+  width: 25px;
+  height: 25px;
+  animation-delay: 15s;
+  animation-duration: 45s;
+}
+
+.circles li:nth-child(9){
+  left: 20%;
+  width: 15px;
+  height: 15px;
+  animation-delay: 2s;
+  animation-duration: 35s;
+}
+
+.circles li:nth-child(10){
+  left: 85%;
+  width: 150px;
+  height: 150px;
+  animation-delay: 0s;
+  animation-duration: 11s;
+}
+
+
+
+@keyframes animate {
+
+  0%{
+      transform: translateY(0) rotate(0deg);
+      opacity: 1;
+      border-radius: 0;
   }
 
-  /* Adjust button sizes */
-  button {
-    font-size: 16px;
-    padding: 10px 15px;
+  100%{
+      transform: translateY(-1000px) rotate(720deg);
+      opacity: 0;
+      border-radius: 50%;
   }
 
-  /* Adjust input field sizes */
-  .form-group input {
-    font-size: 14px;
-    padding: 10px;
-  }
 }
