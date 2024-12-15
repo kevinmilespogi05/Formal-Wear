@@ -13,7 +13,7 @@ import { UsersComponent } from './admin/users/users.component';
 
 
 export const routes: Routes = [
-  { path: '', redirectTo: '/rent', pathMatch: 'full' },
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
   {
     path: 'rent',
     component: UserSidenavComponent,  // Wrap RentComponent with UserSidenav
