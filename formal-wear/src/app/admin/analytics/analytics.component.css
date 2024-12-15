@@ -1,0 +1,37 @@
+.analytics-container {
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.stats {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 30px;
+}
+
+.stat {
+    text-align: center;
+}
+
+.stat h2 {
+    font-size: 2.5rem;
+    color: #3498db;
+}
+
+.stat p {
+    font-size: 1.2rem;
+    color: #555;
+}
+
+/* Enlarge the chart container */
+canvas {
+    display: block;
+    margin: 0 auto;
+    width: 40%; /* Adjust width as needed */
+    height: 500px; /* Increase height to make it more prominent */
+    left: 50%;
+}

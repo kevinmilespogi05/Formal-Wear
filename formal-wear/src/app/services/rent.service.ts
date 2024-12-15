@@ -81,5 +81,14 @@ export class RentService {
   getUserById(userId: number): Observable<any> {
     return this.http.post<any>(`${this.apiUrl}/users/get_profile.php`, { user_id: userId });
   }
+
+  updateRentalStatus(rentalId: number, status: string): Observable<any> {
+    const payload = { status };
+    return this.http.put(`${this.apiUrl}/rent/rent/${rentalId}/status`, payload);
+  }
   
+  // Fetch analytics data
+  getAnalytics(): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/admin/analytics.php`);
+  }
 }
