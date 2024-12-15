@@ -4,6 +4,16 @@
     <div></div>
     <div></div>
   </div>
+
+  <!-- Logo Section with Formal Attire Icon -->
+  <div class="logo-container text-center py-4">
+    <!-- Formal Attire Icon -->
+    <i class="bi bi-person-circle" style="font-size: 3rem; color: #fff;"></i>
+    <p class="mt-2" style="color: #fff; font-size: 1.0rem;">Welcome Back! </p>
+    <h2 class="mt-2" style="color: #fff; font-size: 2.1rem;">Formal Wear</h2>
+  </div>
+
+  <!-- Navigation Links -->
   <ul>
     <li>
       <a routerLink="/rent">
@@ -15,11 +25,13 @@
         <i class="bi bi-cart"></i> Cart
       </a>
     </li>
-    <li>
-      <a href="javascript:void(0)" (click)="logout()" class="logout">
-        <i class="bi bi-box-arrow-right"></i> Logout
-      </a>
-    </li>
   </ul>
+  <!-- Logout button -->
+  <div class="logout-container">
+    <button (click)="logout()" class="logout-btn btn btn-danger w-100 text-white py-2">
+      <i class="bi bi-box-arrow-right"></i> Logout
+    </button>
+  </div>
 </nav>
+
 <router-outlet></router-outlet>
