@@ -9,7 +9,8 @@
   <div class="row">
     <div *ngFor="let product of products" class="col-lg-4 col-md-6 col-sm-12 mb-4">
       <div class="product-item card shadow-sm">
-        <img [src]="product.image_path" alt="{{ product.product_name }}" class="product-image card-img-top" />
+        <!-- Use '/assets/' to form the correct image path -->
+        <img [src]="'/assets/' + product.image" alt="{{ product.product_name }}" class="product-image card-img-top" />
         <div class="card-body">
           <h3 class="card-title">{{ product.product_name }}</h3>
           <p class="card-text">{{ product.product_description }}</p>

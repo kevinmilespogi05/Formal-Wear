@@ -19,7 +19,7 @@ if ($stmt->rowCount() > 0) {
             'product_name' => $row['name'],
             'product_price' => $row['price'],
             'product_description' => $row['description'],
-            'image_path' => $row['image']
+            'image' => $row['image']  // Ensuring 'image' is returned
         ];
         $products_arr[] = $product_item;
     }
